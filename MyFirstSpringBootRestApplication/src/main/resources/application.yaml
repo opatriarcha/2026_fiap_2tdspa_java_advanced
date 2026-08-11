@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: MyFirstSpringBootRestApplication
+#spring.application.name=MyFirstSpringBootRestApplication
+
+server:
+  port: 8080
+#server.port=8080;
+#server.port=${SYSTEM_PORT:8080} caso essa porra exista no SO como variavel de ambiente use, caso contrario use o valor default depois dos  ":"
