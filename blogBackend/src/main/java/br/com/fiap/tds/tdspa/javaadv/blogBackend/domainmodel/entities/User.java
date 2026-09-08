@@ -48,11 +48,14 @@ public class User {
 
     @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
-            name="SYS008_SUSTEM_USERS_ROLES",
+            name="SYS008_SYSTEM_USERS_ROLES",
             joinColumns = @JoinColumn( name="user_id"),
             inverseJoinColumns = @JoinColumn( name = "role_id")
     )
     private @Getter @Setter Set<Role> roles = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private @Getter @Setter Set<Order> orders;
 
     @Override
     public boolean equals(Object o) {
