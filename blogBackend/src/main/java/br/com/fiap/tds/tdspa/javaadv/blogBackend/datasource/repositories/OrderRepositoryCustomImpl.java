@@ -1,6 +1,6 @@
 package br.com.fiap.tds.tdspa.javaadv.blogBackend.datasource.repositories;
 
-import br.com.fiap.tds.tdspa.javaadv.blogBackend.domainmodel.entities.Order;
+import br.com.fiap.tds.tdspa.javaadv.blogBackend.domainmodel.entities.*;
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.domainmodel.entities.QOrder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;

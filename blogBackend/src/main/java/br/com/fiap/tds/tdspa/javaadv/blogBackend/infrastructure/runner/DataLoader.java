@@ -77,7 +77,7 @@ public class DataLoader {
 
                 User user = new User();
                 user.setName(name);
-                user.setEmail("orlando@gmail.com");
+                user.setEmail("orlando@gmail.com" + i);
                 user.setPassword("P@ssword" + i);
                 user.setRoles(Set.of(finalRoles.get(random.nextInt(finalRoles.size()))));
 
