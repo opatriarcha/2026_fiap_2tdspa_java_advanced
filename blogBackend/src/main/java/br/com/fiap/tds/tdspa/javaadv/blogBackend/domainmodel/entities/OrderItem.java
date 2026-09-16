@@ -27,5 +27,5 @@ public class OrderItem {
             @JoinColumn(name = "ORDER_ID", referencedColumnName = "ORDER_ID", insertable = false, updatable = false),
             @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID", insertable = false, updatable = false)
     })
-    private Order order;
+    private @Getter @Setter Order order;
 }
