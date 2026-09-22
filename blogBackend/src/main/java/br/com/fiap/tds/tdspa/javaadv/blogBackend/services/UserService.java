@@ -1,6 +1,7 @@
 package br.com.fiap.tds.tdspa.javaadv.blogBackend.services;
 
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.domainmodel.entities.User;
+import org.hibernate.Hibernate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -29,4 +30,6 @@ public interface UserService {
     Optional<User> partialUpdate(UUID id, Map<String, Object> updates);
 
     Page<User> findAllPaged(int page, int size, String orderBy, String direction);
+
+    List<User> findByRole(String role);
 }

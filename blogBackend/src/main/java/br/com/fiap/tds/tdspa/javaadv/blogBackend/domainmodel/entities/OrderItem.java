@@ -29,11 +29,11 @@ public class OrderItem {
     })
     private @Getter @Setter Order order;
 
-//    public Order getOrder() {
-//        return order;
-//    }
+    public Order getOrder() {
+        return order;
+    }
 
-//    public void setOrder(Order order) {
-//        this.order = order;
-//    }
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }

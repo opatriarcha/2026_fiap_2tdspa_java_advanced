@@ -29,12 +29,12 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
     public @Getter @Setter User user;
-//
-//    public Set<OrderItem> getItems() {
-//        return items;
-//    }
-//
-//    public void setItems(Set<OrderItem> items) {
-//        this.items = items;
-//    }
+
+    public Set<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(Set<OrderItem> items) {
+        this.items = items;
+    }
 }

@@ -4,6 +4,7 @@ import br.com.fiap.tds.tdspa.javaadv.blogBackend.datasource.repositories.UserRep
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.domainmodel.entities.User;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -88,5 +89,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<User> findAllPaged(int page, int size, String orderBy, String direction) {
         return this.userRepository.findAll(PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(direction), orderBy)));
+    }
+
+    @Override
+    public List<User> findByRole(String role) {
+        return this.userRepository.findByRole(role);
     }
 }

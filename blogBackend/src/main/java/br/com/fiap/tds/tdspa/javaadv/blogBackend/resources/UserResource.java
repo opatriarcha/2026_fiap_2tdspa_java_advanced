@@ -105,6 +105,17 @@ public class UserResource {
     }
 
 
+   // http://loclahost:8080/api/v1/users?role=ADMIN
+    @GetMapping("/queryByRole")
+    public ResponseEntity<List<UserDTO>> fetchUserByRole( @RequestParam String role){
+        return ResponseEntity.ok(this.userService.findByRole(role)
+                .stream().map(UserDTO::fromEntity)
+                .collect(Collectors.toList()));
+    }
+
+
+
+
 
 
 

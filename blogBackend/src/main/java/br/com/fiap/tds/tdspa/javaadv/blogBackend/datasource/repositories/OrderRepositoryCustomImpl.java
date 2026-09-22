@@ -2,7 +2,6 @@ package br.com.fiap.tds.tdspa.javaadv.blogBackend.datasource.repositories;
 
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.domainmodel.entities.*;
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.domainmodel.entities.QOrder;
-import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -10,6 +9,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
+import lombok.Setter;
 import org.springframework.stereotype.Repository;
 
 import java.util.LinkedList;
@@ -19,7 +19,7 @@ import java.util.List;
 public class OrderRepositoryCustomImpl implements OrderRepositoryCustom{
 
     @PersistenceContext
-    private EntityManager entityManager;
+    private @Setter EntityManager entityManager;
 
     @Override
     public List<Order> findByTotalQuantityGreaterThanQueryDsl(Integer quantity) {
