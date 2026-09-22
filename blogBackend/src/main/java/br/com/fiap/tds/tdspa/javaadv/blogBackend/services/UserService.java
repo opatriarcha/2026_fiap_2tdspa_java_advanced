@@ -28,4 +28,5 @@ public interface UserService {
 
     Optional<User> partialUpdate(UUID id, Map<String, Object> updates);
 
+    Page<User> findAllPaged(int page, int size, String orderBy, String direction);
 }

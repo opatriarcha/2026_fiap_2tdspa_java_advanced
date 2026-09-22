@@ -5,6 +5,9 @@ import br.com.fiap.tds.tdspa.javaadv.blogBackend.resources.dtos.UserDTO;
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.Parameter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -85,6 +88,23 @@ public class UserResource {
         this.userService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/paged")
+    public ResponseEntity<Page<UserDTO>> findAllPaged(@RequestParam(defaultValue = "0") int page,
+                                                       @RequestParam(defaultValue = "10") int size,
+                                                       @RequestParam(defaultValue = "id") String orderBy,
+                                                       @RequestParam(defaultValue = "asc") String direction) {
+        Page<User> users = this.userService.findAllPaged(page, size, orderBy, direction);
+        return ResponseEntity.ok(users.map(UserDTO::fromEntity));
+    }
+
+    @GetMapping("/paged-default")
+    public ResponseEntity<Page<UserDTO>> findAllPaged(Pageable pageable) {
+       return ResponseEntity.ok(this.userService.findAll(pageable)
+               .map(UserDTO::fromEntity));
+    }
+
+
 
 
 

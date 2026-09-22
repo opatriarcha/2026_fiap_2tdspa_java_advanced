@@ -6,7 +6,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -81,5 +83,10 @@ public class UserServiceImpl implements UserService {
            return Optional.of(this.userRepository.save(user));
        }
        return Optional.empty();
+    }
+
+    @Override
+    public Page<User> findAllPaged(int page, int size, String orderBy, String direction) {
+        return this.userRepository.findAll(PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(direction), orderBy)));
     }
 }
