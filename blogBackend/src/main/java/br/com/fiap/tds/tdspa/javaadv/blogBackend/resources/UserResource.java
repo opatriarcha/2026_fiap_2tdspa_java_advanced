@@ -5,7 +5,6 @@ import br.com.fiap.tds.tdspa.javaadv.blogBackend.resources.dtos.UserDTO;
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -71,7 +70,7 @@ public class UserResource {
         return ResponseEntity.ok(UserDTO.fromEntity(updatedUSer));
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<UserDTO> partialUpdate(@PathVariable UUID id, @Valid @RequestBody Map<String, Object> updates){
         if( !this.userService.existsById(id))
             return ResponseEntity.notFound().build();
