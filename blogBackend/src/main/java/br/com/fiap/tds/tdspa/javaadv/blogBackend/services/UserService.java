@@ -27,4 +27,5 @@ public interface UserService {
     boolean existsById(User user);
 
     Optional<User> partialUpdate(UUID id, Map<String, Object> updates);
+
 }

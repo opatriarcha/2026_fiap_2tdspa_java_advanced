@@ -10,6 +10,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@Configuration
 public class DataLoader {
 
     List<String> sampleNames = Arrays.asList(

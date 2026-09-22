@@ -21,7 +21,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @NotBlank(message="O ID é Obrigatório")
+//    @NotBlank(message="O ID é Obrigatório")
     private @Getter @Setter UUID id;
 
     @Column(name = "NAME", length = 60)
