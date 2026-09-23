@@ -5,10 +5,7 @@ import org.hibernate.Hibernate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public interface UserService {
     List<User> findAll();
@@ -31,5 +28,5 @@ public interface UserService {
 
     Page<User> findAllPaged(int page, int size, String orderBy, String direction);
 
-    List<User> findByRole(String role);
+    Set<User> findByRole(String role);
 }

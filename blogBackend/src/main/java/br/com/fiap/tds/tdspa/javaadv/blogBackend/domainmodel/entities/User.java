@@ -44,7 +44,7 @@ public class User {
 
 
     @OneToMany(mappedBy="user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private @Getter @Setter Set<Post> posts = new HashSet<>();
+    private @Getter @Setter Set<Post> posts;
 
     @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
@@ -52,7 +52,7 @@ public class User {
             joinColumns = @JoinColumn( name="user_id"),
             inverseJoinColumns = @JoinColumn( name = "role_id")
     )
-    private @Getter @Setter Set<Role> roles = new HashSet<>();
+    private @Getter @Setter Set<Role> roles;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private @Getter @Setter Set<Order> orders;

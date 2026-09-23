@@ -1,6 +1,8 @@
 package br.com.fiap.tds.tdspa.javaadv.blogBackend.services;
 
+import br.com.fiap.tds.tdspa.javaadv.blogBackend.datasource.repositories.RoleRepository;
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.datasource.repositories.UserRepository;
+import br.com.fiap.tds.tdspa.javaadv.blogBackend.domainmodel.entities.Role;
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.domainmodel.entities.User;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -12,15 +14,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
    @Override
    public List<User> findAll(){
@@ -92,7 +92,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findByRole(String role) {
-        return this.userRepository.findByRole(role);
+    public Set<User> findByRole(String roleName) {
+
+       Role role = this.roleRepository.findByName(roleName).get();
+       return role.getUsers();
     }
 }
