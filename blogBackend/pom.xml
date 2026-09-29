@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -46,7 +46,26 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-restdocs</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.restdocs</groupId>
+			<artifactId>spring-restdocs-mockmvc</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -68,27 +87,25 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-
-<!--		&lt;!&ndash; BEGIN OF QueryDSL &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>com.querydsl</groupId>-->
-<!--			<artifactId>querydsl-jpa</artifactId>-->
-<!--			<version>${querydsl.version}</version>-->
-<!--			<classifier>jakarta</classifier>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.querydsl</groupId>-->
-<!--			<artifactId>querydsl-apt</artifactId>-->
-<!--			<version>${querydsl.version}</version>-->
-<!--			<classifier>jakarta</classifier>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.querydsl</groupId>-->
-<!--			<artifactId>querydsl-core</artifactId>-->
-<!--			<version>${querydsl.version}</version>-->
-<!--		</dependency>-->
+		<!--       &lt;!&ndash; BEGIN OF QueryDSL &ndash;&gt;-->
+		<!--       <dependency>-->
+		<!--          <groupId>com.querydsl</groupId>-->
+		<!--          <artifactId>querydsl-jpa</artifactId>-->
+		<!--          <version>${querydsl.version}</version>-->
+		<!--          <classifier>jakarta</classifier>-->
+		<!--       </dependency>-->
+		<!--       <dependency>-->
+		<!--          <groupId>com.querydsl</groupId>-->
+		<!--          <artifactId>querydsl-apt</artifactId>-->
+		<!--          <version>${querydsl.version}</version>-->
+		<!--          <classifier>jakarta</classifier>-->
+		<!--       </dependency>-->
+		<!--       <dependency>-->
+		<!--          <groupId>com.querydsl</groupId>-->
+		<!--          <artifactId>querydsl-core</artifactId>-->
+		<!--          <version>${querydsl.version}</version>-->
+		<!--       </dependency>-->
 		<!-- END OF QueryDSL -->
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -105,7 +122,6 @@
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<!-- OpenFeign QueryDSL fork -->
 		<dependency>
 			<groupId>io.github.openfeign.querydsl</groupId>
@@ -113,90 +129,84 @@
 			<version>7.1</version>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-<!--			<plugin>-->
-<!--				<groupId>org.apache.maven.plugins</groupId>-->
-<!--				<artifactId>maven-compiler-plugin</artifactId>-->
-<!--				<configuration>-->
-<!--					<proc>full</proc>-->
-<!--					<generatedSourcesDirectory>${project.build.directory}/generated-sources/java</generatedSourcesDirectory>-->
-<!--					<annotationProcessorPaths>-->
-<!--						<path>-->
-<!--							<groupId>io.github.openfeign.querydsl</groupId>-->
-<!--							<artifactId>querydsl-apt</artifactId>-->
-<!--							<version>7.1</version>-->
-<!--							<classifier>jpa</classifier>-->
-<!--						</path>-->
-<!--					</annotationProcessorPaths>-->
-<!--				</configuration>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						<id>default-compile</id>-->
-<!--						<phase>compile</phase>-->
-<!--						<goals>-->
-<!--							<goal>compile</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<annotationProcessorPaths>-->
-<!--								<path>-->
-<!--									<groupId>Åorg.projectlombok</groupId>-->
-<!--									<artifactId>lombok</artifactId>-->
-<!--								</path>-->
-<!--								<path>-->
-<!--									<groupId>org.springframework.boot</groupId>-->
-<!--									<artifactId>spring-boot-configuration-processor</artifactId>-->
-<!--								</path>-->
-<!--							</annotationProcessorPaths>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--					<execution>-->
-<!--						<id>default-testCompile</id>-->
-<!--						<phase>test-compile</phase>-->
-<!--						<goals>-->
-<!--							<goal>testCompile</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<annotationProcessorPaths>-->
-<!--								<path>-->
-<!--									<groupId>org.projectlombok</groupId>-->
-<!--									<artifactId>lombok</artifactId>-->
-<!--								</path>-->
-<!--							</annotationProcessorPaths>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--				</executions>-->
-<!--			</plugin>-->
+			<!--          <plugin>-->
+			<!--             <groupId>org.apache.maven.plugins</groupId>-->
+			<!--             <artifactId>maven-compiler-plugin</artifactId>-->
+			<!--             <configuration>-->
+			<!--                <proc>full</proc>-->
+			<!--                <generatedSourcesDirectory>${project.build.directory}/generated-sources/java</generatedSourcesDirectory>-->
+			<!--                <annotationProcessorPaths>-->
+			<!--                   <path>-->
+			<!--                      <groupId>io.github.openfeign.querydsl</groupId>-->
+			<!--                      <artifactId>querydsl-apt</artifactId>-->
+			<!--                      <version>7.1</version>-->
+			<!--                      <classifier>jpa</classifier>-->
+			<!--                   </path>-->
+			<!--                </annotationProcessorPaths>-->
+			<!--             </configuration>-->
+			<!--             <executions>-->
+			<!--                <execution>-->
+			<!--                   <id>default-compile</id>-->
+			<!--                   <phase>compile</phase>-->
+			<!--                   <goals>-->
+			<!--                      <goal>compile</goal>-->
+			<!--                   </goals>-->
+			<!--                   <configuration>-->
+			<!--                      <annotationProcessorPaths>-->
+			<!--                         <path>-->
+			<!--                            <groupId>Åorg.projectlombok</groupId>-->
+			<!--                            <artifactId>lombok</artifactId>-->
+			<!--                         </path>-->
+			<!--                         <path>-->
+			<!--                            <groupId>org.springframework.boot</groupId>-->
+			<!--                            <artifactId>spring-boot-configuration-processor</artifactId>-->
+			<!--                         </path>-->
+			<!--                      </annotationProcessorPaths>-->
+			<!--                   </configuration>-->
+			<!--                </execution>-->
+			<!--                <execution>-->
+			<!--                   <id>default-testCompile</id>-->
+			<!--                   <phase>test-compile</phase>-->
+			<!--                   <goals>-->
+			<!--                      <goal>testCompile</goal>-->
+			<!--                   </goals>-->
+			<!--                   <configuration>-->
+			<!--                      <annotationProcessorPaths>-->
+			<!--                         <path>-->
+			<!--                            <groupId>org.projectlombok</groupId>-->
+			<!--                            <artifactId>lombok</artifactId>-->
+			<!--                         </path>-->
+			<!--                      </annotationProcessorPaths>-->
+			<!--                   </configuration>-->
+			<!--                </execution>-->
+			<!--             </executions>-->
+			<!--          </plugin>-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
-
 					<generatedSourcesDirectory>
 						${project.build.directory}/generated-sources/annotations
 					</generatedSourcesDirectory>
-
 					<annotationProcessorPaths>
-
 						<!-- Lombok -->
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</path>
-
 						<!-- Spring Configuration Processor -->
 						<path>
 							<groupId>org.springframework.boot</groupId>
 							<artifactId>spring-boot-configuration-processor</artifactId>
 						</path>
-
 						<!-- QueryDSL 7.1 -->
 						<path>
 							<groupId>io.github.openfeign.querydsl</groupId>
@@ -204,11 +214,9 @@
 							<version>7.1</version>
 							<classifier>jpa</classifier>
 						</path>
-
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

@@ -54,11 +54,11 @@ spring:
     hibernate:
       ddl-auto: create-drop
 
-    show-sql: true
+    show-sql: false
 
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
 
         jdbc:
           batch_size: 20
@@ -131,17 +131,17 @@ logging:
     root: INFO
 
     # Hibernate SQL
-    "org.hibernate.SQL": DEBUG
-    "org.hibernate.type.descriptor.sql.BasicBinder": TRACE
+    "org.hibernate.SQL": OFF
+    "org.hibernate.type.descriptor.sql.BasicBinder": INFO
 
     # Spring JDBC
-    "org.springframework.jdbc.core": TRACE
+    "org.springframework.jdbc.core": INFO
 
     # Spring Transactions
-    "org.springframework.transaction": TRACE
+    "org.springframework.transaction": INFO
 
     # Application
-    "br.com.fiap.tds.tdspa.javaadv.blogBackend": DEBUG
+    "br.com.fiap.tds.tdspa.javaadv.blogBackend": INFO
 
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"
