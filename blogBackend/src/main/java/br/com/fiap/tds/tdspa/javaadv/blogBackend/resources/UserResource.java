@@ -3,6 +3,12 @@ package br.com.fiap.tds.tdspa.javaadv.blogBackend.resources;
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.domainmodel.entities.User;
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.resources.dtos.UserDTO;
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.services.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.Parameter;
@@ -19,12 +25,20 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
+
+@Tag(name="Users", description = "User management topics")
 public class UserResource {
 
 
     private final UserService userService;
 
     @GetMapping("/")
+    @Operation(summary = "List all users", description = "List all users in the system")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Found"),
+            @ApiResponse(responseCode = "404", description = "Not Found",
+            content = @Content(schema = @Schema(implementation = UserDTO.class)))
+    })
     public ResponseEntity<List<UserDTO>> findAll() {
 //        List<User> users = this.userService.findAll();
 //        List<UserDTO> resultset = new LinkedList<>();
@@ -42,6 +56,7 @@ public class UserResource {
 
     //http://localhost:8080/api/v1/users/{id}
     @GetMapping("/{id}")
+    @Operation(summary = "Find a user by ID", description = "Find a user by ID in the system")
     public ResponseEntity<UserDTO> findByID( @PathVariable("id") UUID id){
         return this.userService.findById(id)
                 .map( user -> ResponseEntity.ok(UserDTO.fromEntity(user)))

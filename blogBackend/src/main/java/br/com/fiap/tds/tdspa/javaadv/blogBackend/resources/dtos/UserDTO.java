@@ -2,6 +2,7 @@ package br.com.fiap.tds.tdspa.javaadv.blogBackend.resources.dtos;
 
 
 import br.com.fiap.tds.tdspa.javaadv.blogBackend.domainmodel.entities.User;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,13 +19,15 @@ import java.util.UUID;
 @Builder
 @EqualsAndHashCode(of = "id")
 @ToString
+@Schema(description = "Representation of a User")
 public class UserDTO {
     @NotBlank(message="O ID é Obrigatório")
-    private @Getter
-    @Setter UUID id;
+    @Schema(description = "User's ID", example = "123e4567-e89b-12d3-a456-426614174000")
+    private @Getter @Setter UUID id;
 
     @NotBlank(message="O Nome é obrigatório")
     @Size(max=60, message="O tamanho máximo do nome é 60 caractereres")
+    @Schema(description = "User's name", example = "Joao da Silva")
     private @Getter @Setter String name;
 
     @Size(max = 60, min=8, message = "O email deve ter entre 8 e 60 caracteres.")
