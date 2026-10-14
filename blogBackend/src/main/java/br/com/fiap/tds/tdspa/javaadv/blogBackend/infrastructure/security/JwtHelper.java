@@ -27,7 +27,7 @@ public class JwtHelper {
                 .compact();
     }
 
-    private String extractUsername( final String token ){
+    public String extractUsername( final String token ){
         return Jwts.parserBuilder()
                 .setSigningKey(this.getSignKey())
                 .build()
@@ -36,7 +36,7 @@ public class JwtHelper {
                 .getSubject();
     }
 
-    private boolean isTokenValid(final String token, UserDetails userdetails ){
+    public  boolean isTokenValid(final String token, UserDetails userdetails ){
         final String username = this.extractUsername(token);
         return username.equals(userdetails.getUsername()) && !this.isTokenExpired(token);
     }
